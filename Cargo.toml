@@ -1,0 +1,11 @@
+[package]
+name = "leetcode"
+version = "0.1.0"
+authors = ["yongxiang.bao <yongxiang.bao@mobilemd.cn>"]
+edition = "2018"
+
+[[bin]]
+name = "leetcode"
+path ="main.rs"
+
+[dependencies]
