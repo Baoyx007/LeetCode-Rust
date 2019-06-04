@@ -1,4 +1,3 @@
-struct Solution;
 
 /*
  * @lc app=leetcode.cn id=34 lang=rust
@@ -72,11 +71,4 @@ fn case() {
     vec![-1, -1]
   );
   assert_eq!(Solution::search_range(vec![1], 0), vec![-1, -1]);
-}
-
-fn main() {
-  // let sol = Solution;"jjhafiecg"
-  // "gj"
-  // trace_macros!(true);
-  println!("{:?}", Solution::search_range(vec![1, 4], 4));
 }
