@@ -1,15 +1,3 @@
-struct Solution;
-
-macro_rules! vec2d {
-    ($($arr:tt),*) => { // handle sets
-        {
-            let mut ret= Vec::new();
-            $(ret.push(vec!$arr);)*
-            ret
-        }
-    };
-}
-
 use std::cmp::Ordering;
 use std::collections::BinaryHeap;
 
@@ -29,7 +17,6 @@ impl PartialOrd for Item {
 }
 
 impl Solution {
-  // pub fn mid_find(matrix: &Vec<Vec<i32>>)
 
   pub fn kth_smallest(matrix: Vec<Vec<i32>>, k: i32) -> i32 {
     let len = matrix.len();
@@ -54,22 +41,4 @@ impl Solution {
 
     min.0
   }
-}
-
-#[test]
-fn case() {
-  assert_eq!(
-    Solution::search_range(vec![5, 7, 7, 8, 8, 10], 8),
-    vec![3, 4]
-  );
-  assert_eq!(
-    Solution::search_range(vec![5, 7, 7, 8, 8, 10], 6),
-    vec![-1, -1]
-  );
-  assert_eq!(Solution::search_range(vec![1], 0), vec![-1, -1]);
-}
-
-fn main() {
-  let obj = Solution::kth_smallest(vec2d![[1, 5, 9], [10, 11, 13], [12, 13, 15]], 8);
-  // println!("{:?}", Solution::search_range(vec![1, 4], 4));
 }
