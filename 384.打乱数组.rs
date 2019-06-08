@@ -32,25 +32,3 @@ impl Solution {
     ret
   }
 }
-
-#[test]
-fn case() {
-  assert_eq!(
-    Solution::search_range(vec![5, 7, 7, 8, 8, 10], 8),
-    vec![3, 4]
-  );
-  assert_eq!(
-    Solution::search_range(vec![5, 7, 7, 8, 8, 10], 6),
-    vec![-1, -1]
-  );
-  assert_eq!(Solution::search_range(vec![1], 0), vec![-1, -1]);
-}
-
-fn main() {
-  let obj = Solution::new(vec![1, 2, 3]);
-  let ret_1: Vec<i32> = obj.reset();
-  println!("{:?}", ret_1);
-  let ret_2: Vec<i32> = obj.shuffle();
-  println!("{:?}", ret_2);
-  // println!("{:?}", Solution::search_range(vec![1, 4], 4));
-}
