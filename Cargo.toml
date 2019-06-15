@@ -5,8 +5,11 @@ authors = ["yongxiang.bao <yongxiang.bao@mobilemd.cn>"]
 edition = "2018"
 
 [[bin]]
-name = "leetcode"
+name='leetcode'
 path ="main.rs"
+
+[lib]
+path = "lib.rs"
 
 [dependencies]
 rand="^0.6.5"
