@@ -1,10 +1,3 @@
-struct Solution;
-
-/*
- * @lc app=leetcode.cn id=139 lang=rust
- *
- * [139] 单词拆分
- */
 impl Solution {
   pub fn word_break(s: String, word_dict: Vec<String>) -> bool {
     let mut dp: Vec<bool> = Vec::with_capacity(s.len() + 1);
@@ -23,14 +16,4 @@ impl Solution {
     println!("{:?}", dp);
     dp[s.len()]
   }
-}
-
-fn main() {
-  println!(
-    "{}",
-    Solution::word_break(
-      "applepenapple".to_string(),
-      vec!["apple".to_string(), "pen".to_string()]
-    )
-  );
 }
