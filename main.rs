@@ -1,40 +1,42 @@
 struct Solution;
-
-use leetcode::vec2d;
 /*
- * @lc app=leetcode.cn id=62 lang=rust
+ * @lc app=leetcode.cn id=621 lang=rust
  *
- * [62] 不同路径
+ * [621] 任务调度器
  */
 impl Solution {
-  pub fn unique_paths(m: i32, n: i32) -> i32 {
-    if m <= 0 || n <= 0 {
-      return 0;
-    }
-    if m == 1 || n == 1 {
-      return 1;
-    }
-    let m = m as usize;
-    let n = n as usize;
-    let mut dp = vec![vec![0; n]; m];
-    dp[0][1] = 1;
-    dp[1][0] = 1;
-
-    for i in 0..m {
-      for j in 0..n {
-        dp[i][j] = match (i.checked_sub(1), j.checked_sub(1)) {
-          (Some(pre_i), Some(pre_j)) => dp[pre_i][j] + dp[i][pre_j],
-          (None, None) => 0,
-          _ => 1,
-        };
-        // println!("{} {} , {}", i, j, dp[i][j]);
+  pub fn least_interval(tasks: Vec<char>, n: i32) -> i32 {
+    let mut bucket = [0; 26];
+    let mut max = 0;
+    for &c in &tasks {
+      let ascii = c as usize - 65;
+      bucket[ascii] += 1;
+      if bucket[ascii] > max {
+        max = bucket[ascii];
       }
     }
-    dp[m-1][n-1]
+
+    let mut res = (max - 1) * (n + 1);
+
+    for &count in bucket.iter() {
+      if count == max {
+        res += 1;
+      }
+    }
+
+    let len = tasks.len() as i32;
+    if res > len {
+      res
+    } else {
+      len
+    }
   }
 }
 
 fn main() {
-  // println!("{:?}", vec2d[vec![]])
-  println!("{}", Solution::unique_paths(7, 3));
+  // println!('{:?}', vec2d[vec![]])
+  println!(
+    "{}",
+    Solution::least_interval(vec!['A', 'A', 'A', 'B', 'B', 'B'], 2)
+  );
 }
