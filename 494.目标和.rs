@@ -1,13 +1,14 @@
-struct Solution;
-
-use leetcode::add;
 use std::convert::TryInto;
-// use leetcode::add
-/*
- * @lc app=leetcode.cn id=494 lang=rust
- *
- * [494] 目标和
- */
+
+pub fn add(u: usize, i: i32) -> usize {
+  if i.is_negative() {
+    u - i.wrapping_abs() as u32 as usize
+  } else {
+    u + i as usize
+  }
+}
+
+
 impl Solution {
   pub fn find_target_sum_ways(nums: Vec<i32>, s: i32) -> i32 {
     // let nums:  Vec<usize>= nums.into();
@@ -18,6 +19,7 @@ impl Solution {
     // -max ... 0    ... max, dp 范围
     // 0    ... max  ... 2max
     // index 其实是算出的值
+    // value 是存在的个数
     let mut dp = vec![0; max * 2 + 1];
     dp[max] = 1; // 第一轮 dp, nums 一个都没选, 那么只有一种情况, 值为 0
     for num in nums {
@@ -34,9 +36,4 @@ impl Solution {
 
     dp[add(max, s)]
   }
-}
-
-fn main() {
-  // println!('{:?}', vec2d[vec![]])
-  println!("{}", Solution::find_target_sum_ways(vec![1, 1, 1, 1, 1], 3));
 }
