@@ -1,5 +1,3 @@
-struct Solution;
-
 impl Solution {
   pub fn subsets(nums: Vec<i32>) -> Vec<Vec<i32>> {
     let mut ret = vec![vec![]];
@@ -21,8 +19,4 @@ impl Solution {
 
     ret
   }
-}
-
-fn main() {
-  println!("{:?}", Solution::subsets(vec![1, 2, 3]));
 }
