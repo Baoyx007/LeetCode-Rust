@@ -1,28 +1,30 @@
+use leetcode::ListNode;
+
 struct Solution;
+/*
+ * @lc app=leetcode.cn id=206 lang=rust
+ *
+ * [206] 反转链表
+ */
+// Definition for singly-linked list.
 
 impl Solution {
-  pub fn subsets(nums: Vec<i32>) -> Vec<Vec<i32>> {
-    let mut ret = vec![vec![]];
-
-    for n in nums {
-      let new_ret: Vec<Vec<i32>> = ret
-        .clone()
-        .into_iter()
-        .map(|mut r| {
-          r.push(n);
-          r
-        })
-        .collect();
-
-      ret.extend(new_ret.iter().cloned());
-      // println!("{:?}", ret);
-      // [ret,  ]
+  pub fn reverse_list(head: Option<Box<ListNode>>) -> Option<Box<ListNode>> {
+    if let Some(mut hp) = head {
+      // foo.
+      let recv = Solution::reverse_list(hp.next);
+      if let Some(p) = recv {
+              hp.next.next = hp;
+      } else {
+        // head
+      }
+    }else{
+ None
     }
-
-    ret
+   
   }
 }
 
 fn main() {
-  println!("{:?}", Solution::subsets(vec![1, 2, 3]));
+  // println!("{:?}", Solution::reverse_list());
 }
