@@ -1,14 +1,8 @@
-use leetcode::ListNode;
-use std::convert::TryInto;
-
-struct Solution;
 /*
- * @lc app=leetcode.cn id=206 lang=rust
+ * @lc app=leetcode.cn id=22 lang=rust
  *
- * [206] 反转链表
+ * [22] 括号生成
  */
-// Definition for singly-linked list.
-
 impl Solution {
   pub fn generate_parenthesis(n: i32) -> Vec<String> {
     if n <= 0 {
@@ -36,8 +30,4 @@ impl Solution {
       Solution::backtrack(ret, cur + ")", open, close + 1, max)
     }
   }
-}
-
-fn main() {
-  println!("{:?}", Solution::generate_parenthesis(3));
 }
