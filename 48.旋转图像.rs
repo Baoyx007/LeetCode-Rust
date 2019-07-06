@@ -1,11 +1,3 @@
-use leetcode::vec2d;
-struct Solution;
-
-/*
- * @lc app=leetcode.cn id=48 lang=rust
- *
- * [48] 旋转图像
- */
 impl Solution {
   fn swap(matrix: &mut Vec<Vec<i32>>, i: usize, j: usize) {
     let tmp = matrix[i][j];
@@ -30,11 +22,4 @@ impl Solution {
       row.reverse();
     }
   }
-}
-
-fn main() {
-  // println!("{:?}", Solution::generate_parenthesis(3));
-  let mut arr = vec2d![[1, 2, 3], [4, 5, 6], [7, 8, 9]];
-  Solution::rotate(&mut arr);
-  println!("{:?}", arr);
 }
