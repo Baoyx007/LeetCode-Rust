@@ -24,8 +24,23 @@
 use std::rc::Rc;
 use std::cell::RefCell;
 impl Solution {
-    pub fn inorder_traversal(root: Option<Rc<RefCell<TreeNode>>>) -> Vec<i32> {
-        
-    }
-}
+   pub fn inorder_traversal(root: Option<Rc<RefCell<TreeNode>>>) -> Vec<i32> {
+    let mut stack: Vec<Rc<RefCell<TreeNode>>> = vec![];
+    let mut ret: Vec<i32> = vec![];
 
+    let mut ptr = root;
+    while ptr.is_some() || !stack.is_empty() {
+      while let Some(p) = ptr {
+        stack.push(p.clone());
+        ptr = p.borrow().left.clone();
+      }
+
+      let top = stack.pop().unwrap();
+      ret.push(top.borrow().val);
+
+      ptr = top.borrow().right.clone();
+    }
+
+    ret
+  }
+}

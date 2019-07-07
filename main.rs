@@ -1,40 +1,22 @@
-use leetcode::vec2d;
 struct Solution;
 
-/*
- * @lc app=leetcode.cn id=48 lang=rust
- *
- * [48] 旋转图像
- */
 impl Solution {
-  fn swap(matrix: &mut Vec<Vec<i32>>, i: usize, j: usize) {
-    let tmp = matrix[i][j];
-    matrix[i][j] = matrix[j][i];
-    matrix[j][i] = tmp;
+  pub fn max_depth_after_split(seq: String) -> Vec<i32> {
+    
   }
 
-  pub fn rotate(matrix: &mut Vec<Vec<i32>>) {
-    let len = matrix.len();
+  pub fn backtrace(seq:String, max:i32,ret:&mut Vec<i32>){
+    // validate ()
 
-    if len <= 1 {
-      return;
-    }
+    ret.push(1)
 
-    for i in 0..len {
-      for j in i..len {
-        Solution::swap(matrix, i, j);
-      }
-    }
 
-    for row in matrix.iter_mut() {
-      row.reverse();
-    }
+    ret.push(0)
+
+    Self::backtrace(seq: String, max: i32, ret:  Vec<i32>)
   }
 }
 
 fn main() {
-  // println!("{:?}", Solution::generate_parenthesis(3));
-  let mut arr = vec2d![[1, 2, 3], [4, 5, 6], [7, 8, 9]];
-  Solution::rotate(&mut arr);
-  println!("{:?}", arr);
+  // println!("{:?}", Solution::defang_i_paddr("255.100.50.0".to_owned()));
 }
