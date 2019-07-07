@@ -22,20 +22,28 @@ impl ListNode {
     ListNode { next: None, val }
   }
 
-  pub fn push(&mut self, val: i32) -> &Self {
-    self.next = Some(Box::new(ListNode::new(val)));
-    self
-  }
+  //   pub fn push(&mut self, val: i32) -> Self {
+  //     let node = ListNode::new(val);
+  //     // self.next = Some(node);
+  //     let ptr = self;
+  //     while let Some(next) = ptr.next {
+  // ptr = next.as_mut();
+  //     }
+
+  // // self = node;
+  // // self
+  // *self
+  //   }
 }
 
 #[macro_export]
 macro_rules! list {
-
     ($($arr:tt),*) => { // handle sets
         {
             let mut ret= ListNode::new();
+            let head = &ret;
             $(ret.push($arr);)*
-            ret
+            Some(Box::new(*head))
         }
     };
 }

@@ -1,52 +1,47 @@
 struct Solution;
-impl Solution {
-  pub fn is_match(s: String, p: String) -> bool {
-    Self::bt(&s, &p)
-  }
 
-  fn bt(rest: &str, p: &str) -> bool {
-    // println!("{} | {}", rest, p);
-    match (rest.is_empty(), p.is_empty()) {
-      (true, true) => return true,
-      // (true, false) => return false,
-      (false, true) => return false,
-      _ => {}
-    };
+/*
+ * @lc app=leetcode.cn id=876 lang=rust
+ *
+ * [876] 链表的中间结点
+ */
+// Definition for singly-linked list.
+// #[derive(PartialEq, Eq, Clone, Debug)]
+// pub struct ListNode {
+//   pub val: i32,
+//   pub next: Option<Box<ListNode>>,
+// }
 
-    // both not empty
-    let mut chars = p.chars();
-    match chars.next() {
-      Some('.') => match chars.next() {
-        Some('*') => {
-          if rest.is_empty() {
-            Self::bt(rest, &p[2..])
-          } else {
-            Self::bt(&rest[1..], p) || Self::bt(rest, &p[2..])
-          }
-        }
+// #[derive(PartialEq, Eq, Clone, Debug)]
+pub struct ListNode {
+  pub val: i32,
+  pub next: Option<Box<ListNode>>
+}
 
-        _ => !rest.is_empty() && Self::bt(&rest[1..], &p[1..]),
-      },
-      Some(c) => {
-        if rest.is_empty() {
-          chars.next() == Some('*') && Self::bt(rest, &p[2..])
-        } else if c != rest.chars().nth(0).unwrap() {
-          match chars.next() {
-            Some('*') => Self::bt(rest, &p[2..]),
-            _ => false,
-          }
-        } else {
-          match chars.next() {
-            Some('*') => Self::bt(&rest[1..], p) || Self::bt(rest, &p[2..]),
-            _ => Self::bt(&rest[1..], &p[1..]),
-          }
-        }
-      }
-      None => false,
+impl ListNode {
+  #[inline]
+  fn new(val: i32) -> Self {
+    ListNode {
+      next: None,
+      val
     }
+  }
+}
+impl Solution {
+  pub fn middle_node(head: Option<Box<ListNode>>) -> Option<Box<ListNode>> {
+    let mut slow = &head;
+    let mut fast = &head;
+
+    while fast.is_some() && fast.unwrap().next.is_some()  {
+      
+      slow = &slow.unwrap().next;
+      fast = &fast.as_ref().unwrap().next.as_ref().unwrap().next;
+    }
+
+    *slow.clone().as_ref()
   }
 }
 
 fn main() {
-  println!("{}", Solution::is_match("".to_owned(), "c*c*".to_owned()));
+  // println!("{:?}", Solution::middle_node(Some(list![1,2,3,4,5])));
 }
