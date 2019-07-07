@@ -1,4 +1,3 @@
-struct Solution;
 impl Solution {
   pub fn is_match(s: String, p: String) -> bool {
     Self::bt(&s, &p)
@@ -47,6 +46,4 @@ impl Solution {
   }
 }
 
-fn main() {
-  println!("{}", Solution::is_match("".to_owned(), "c*c*".to_owned()));
-}
+
