@@ -1,7 +1,3 @@
-use std::collections::HashSet;
-
-struct Solution;
-
 /*
  * @lc app=leetcode.cn id=365 lang=rust
  *
@@ -9,6 +5,8 @@ struct Solution;
  */
 
 // @lc code=start
+use std::collections::HashSet;
+
 impl Solution {
     pub fn can_measure_water(x: i32, y: i32, z: i32) -> bool {
         if z < 0 || z > x + y {
@@ -27,7 +25,6 @@ impl Solution {
         while let Some(target) = target_stack.pop() {
             // println!(target);
             // dbg!(target);
-            let mut ret = false;
             permution.iter().for_each(|&mutation| {
                 if ((mutation > 0 && target + mutation <= x + y)
                     || (mutation < 0 && target + mutation >= 0))
@@ -38,11 +35,7 @@ impl Solution {
             });
             // dbg!(&target_set);
             if target_set.contains(&z) {
-                ret = true;
-            }
-
-            if ret {
-                return ret;
+                return true;
             }
         }
 
@@ -50,7 +43,3 @@ impl Solution {
     }
 }
 // @lc code=end
-
-fn main() {
-    println!("{:?}", Solution::can_measure_water(2, 6, 5));
-}
