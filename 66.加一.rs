@@ -1,4 +1,3 @@
-struct Solution;
 /*
  * @lc app=leetcode.cn id=66 lang=rust
  *
@@ -31,7 +30,3 @@ impl Solution {
     }
 }
 // @lc code=end
-
-fn main() {
-    println!("{:?}", Solution::plus_one(vec![9]));
-}
