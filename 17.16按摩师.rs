@@ -1,5 +1,3 @@
-struct Solution;
-
 use std::cmp;
 
 /// dp[0] = nums[0]
@@ -20,8 +18,4 @@ impl Solution {
 
         dp[nums.len() - 1]
     }
-}
-
-fn main() {
-    println!("{:?}", Solution::massage(vec![2, 1, 4, 5, 3, 1, 1, 3]));
 }
