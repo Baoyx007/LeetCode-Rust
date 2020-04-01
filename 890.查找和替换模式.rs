@@ -1,4 +1,3 @@
-struct Solution;
 /*
  * @lc app=leetcode.cn id=890 lang=rust
  *
@@ -53,16 +52,3 @@ impl Solution {
 }
 
 // @lc code=end
-
-fn main() {
-    println!(
-        "{:?}",
-        Solution::find_and_replace_pattern(
-            vec!["abc", "deq", "mee", "aqq", "dkd", "ccc"]
-                .iter()
-                .map(|s| s.to_string())
-                .collect(),
-            "abb".to_owned()
-        )
-    );
-}
