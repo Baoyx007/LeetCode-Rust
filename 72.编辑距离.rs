@@ -1,5 +1,3 @@
-struct Solution;
-
 /*
 *
 * dp[n][m] =  min(dp[n][m-1] + insert(b) , dp[n-1][m] + insert(a), dp[n-1][m-1] + switch(a->b) )
@@ -47,12 +45,4 @@ impl Solution {
 
         dp[word1_len - 1][word2_len - 1]
     }
-}
-// @lc code=end
-
-fn main() {
-    println!(
-        "{:?}",
-        Solution::min_distance("horse".to_owned(), "ros".to_owned())
-    );
 }
