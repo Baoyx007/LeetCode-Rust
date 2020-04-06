@@ -1,68 +1,27 @@
 struct Solution;
-/*
- * @lc app=leetcode.cn id=890 lang=rust
- *
- * [890] 查找和替换模式
- */
 
-// @lc code=start
-use std::collections::HashMap;
 impl Solution {
-    pub fn find_and_replace_pattern(words: Vec<String>, pattern: String) -> Vec<String> {
-        let mut ret: Vec<String> = Vec::new();
+    pub fn num_steps(s: String) -> i32 {
+        // let ret = s.clone();
 
-        for word in words {
-            if Solution::match_word(word.as_str(), pattern.as_str()) {
-                ret.push(word);
-            }
+        let mut num = 0;
+
+        for (idx, c) in s.chars().rev().enumerate() {
+            dbg!(c.to_digit(2).unwrap());
+            num += c.to_digit(2).unwrap() * uszie::pow(2, idx);
         }
+        dbg!(num);
 
-        ret
-    }
+        // while ret != "1" {
+        //     if ret.chars().last().unwrap() == '1' {
 
-    fn match_word(word: &str, pattern: &str) -> bool {
-        // let mut ret = false;
+        //     }
+        // }
 
-        let mut forward: HashMap<char, char> = HashMap::new();
-        let mut backward: HashMap<char, char> = HashMap::new();
-
-        for (idx, ch) in word.chars().enumerate() {
-            let pattern_ch = pattern.chars().nth(idx).unwrap();
-
-            // dbg!(ch, pattern_ch);
-            if !forward.contains_key(&ch) {
-                forward.insert(ch, pattern_ch);
-            }
-
-            if !backward.contains_key(&pattern_ch) {
-                backward.insert(pattern_ch, ch);
-            }
-
-            // match (forward.get(&ch), backward.get(&pattern_ch)) {
-            //     (Some(p1), Some(p2)) => {}
-            //     _ => return false,
-            // }
-            if forward.get(&ch).unwrap() != &pattern_ch || backward.get(&pattern_ch).unwrap() != &ch
-            {
-                return false;
-            }
-        }
-
-        true
+        0
     }
 }
 
-// @lc code=end
-
 fn main() {
-    println!(
-        "{:?}",
-        Solution::find_and_replace_pattern(
-            vec!["abc", "deq", "mee", "aqq", "dkd", "ccc"]
-                .iter()
-                .map(|s| s.to_string())
-                .collect(),
-            "abb".to_owned()
-        )
-    );
+    println!("{:?}", Solution::num_steps("1101".to_owned()));
 }
