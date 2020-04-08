@@ -46,7 +46,3 @@ impl Solution {
         Solution::moving_count_from_ij(m, n, k, 0, 0, &mut visited)
     }
 }
-
-fn main() {
-    println!("{:?}", Solution::moving_count(3, 2, 17));
-}
