@@ -1,5 +1,3 @@
-use std::collections::HashSet;
-
 use leetcode::vec2d;
 
 struct Solution;
@@ -68,12 +66,4 @@ impl Solution {
             }
         }
     }
-}
-// @lc code=end
-
-fn main() {
-    println!(
-        "{:?}",
-        Solution::game_of_life(&mut vec2d![[0, 1, 0], [0, 0, 1], [1, 1, 1], [0, 0, 0]])
-    );
 }
