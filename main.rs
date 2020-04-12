@@ -1,79 +1,42 @@
-use std::collections::HashSet;
-
-use leetcode::vec2d;
-
 struct Solution;
 
-/*
-* @lc app=leetcode.cn id=289 lang=rust
-*
- 0->1 & 2
- 1->0 & -1
-* [289] 生命游戏
-*/
-
-// @lc code=start
 impl Solution {
-    pub fn game_of_life(board: &mut Vec<Vec<i32>>) {
-        let neighbors: [i32; 3] = [0, 1, -1];
+    // rgb: 1,2,3
+    // fn bt(row: i32, col: i32, grid: Vec<Vec<i32>>, count: i32) {}
 
-        let row_len = board.len();
-        let col_len = board[0].len();
+    // pub fn num_of_ways(n: i32) -> i32 {
+    //     let ret = 0;
 
-        for row in 0..row_len {
-            for col in 0..col_len {
-                let mut live_count = 0;
+    //     let mut grid: Vec<Vec<i32>> = vec![];
+    //     for row in 0..(n as usize) {
+    //         grid.push(vec![0, 0, 0]);
+    //         for col in 0..3 {
+    //             // choose red
+    //             grid[row][col] = 1;
+    //             Self::bt();
+    //             grid[row][col] = 2;
+    //             grid[row][col] = 3;
+    //         }
+    //     }
 
-                for i in 0..3 {
-                    for j in 0..3 {
-                        if i == 0 && j == 0 {
-                            continue;
-                        }
+    //     ret
+    // }
 
-                        let (target_row, target_col) =
-                            (row as i32 + neighbors[i], col as i32 + neighbors[j]);
+    pub fn num_of_ways(n: i32) -> i32 {
+        let mut row = (6u64, 6u64); //abc , aba
+        let d_mod = 10u64.pow(9) + 7;
 
-                        if target_row >= 0
-                            && target_row < row_len as i32
-                            && target_col >= 0
-                            && target_col < col_len as i32
-                            && board[target_row as usize][target_col as usize].abs() == 1
-                        {
-                            live_count += 1;
-                        }
-                    }
-                }
-                // dbg!(live_count);
-                // 规则 1 或规则 3
-                if (board[row][col] == 1) && (live_count < 2 || live_count > 3) {
-                    // -1 代表这个细胞过去是活的现在死了
-                    board[row][col] = -1;
-                }
-                // 规则 4
-                if board[row][col] == 0 && live_count == 3 {
-                    // 2 代表这个细胞过去是死的现在活了
-                    board[row][col] = 2;
-                }
-            }
+        for _ in 1..n {
+            row = (
+                (row.0 * 2 + row.1 * 2) % d_mod,
+                (row.0 * 2 + row.1 * 3) % d_mod,
+            );
         }
-        // dbg!(&board);
 
-        for row in 0..row_len {
-            for col in 0..col_len {
-                if board[row][col] > 0 {
-                    board[row][col] = 1;
-                } else {
-                    board[row][col] = 0;
-                }
-            }
-        }
+        ((row.0 + row.1) % d_mod) as i32
     }
 }
-// @lc code=end
-
 fn main() {
-    println!(
-        "{:?}",
-        Solution::game_of_life(&mut vec2d![[0, 1, 0], [0, 0, 1], [1, 1, 1], [0, 0, 0]])
-    );
+    // println!("{}", String::new());
+    println!("{:?}", Solution::num_of_ways(5000));
 }
