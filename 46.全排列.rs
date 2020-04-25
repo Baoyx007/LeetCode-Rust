@@ -1,5 +1,3 @@
-struct Solution;
-
 /*
  * @lc app=leetcode.cn id=46 lang=rust
  *
@@ -31,8 +29,3 @@ impl Solution {
     }
 }
 // @lc code=end
-
-fn main() {
-    println!("{:?}", Solution::permute(vec![1, 2, 3]));
-    // assert_eq!("",)
-}
