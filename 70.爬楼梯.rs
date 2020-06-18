@@ -1,14 +1,10 @@
-use std::collections::HashMap;
-
-struct Solution;
-
 /*
- * @lc app=leetcode.cn id=23 lang=rust
+ * @lc app=leetcode.cn id=70 lang=rust
  *
- * 23. 合并K个排序链表
+ * [70] 爬楼梯
  */
 
-// Definition for singly-linked list.
+// @lc code=start
 impl Solution {
     pub fn climb_stairs(n: i32) -> i32 {
         let n = n as usize;
@@ -28,7 +24,4 @@ impl Solution {
         *ret.get(n).unwrap() as i32
     }
 }
-
-fn main() {
-    print!("{}", Solution::climb_stairs(1))
-}
+// @lc code=end
